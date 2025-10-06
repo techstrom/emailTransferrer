@@ -3,6 +3,22 @@ poll_interval_seconds: 300
 state_file: state/state.json
 log_level: INFO
 
+# Destination IMAP servers used when writing transferred messages.
+destination_servers:
+  archive_primary:
+    host: imap.example.com
+    port: 993
+    encryption: ssl
+    username: archive@example.com
+    password: archive-password
+
+  # archive_secondary:
+  #   host: imap.archive.example.com
+  #   port: 993
+  #   encryption: ssl
+  #   username: archive2@example.com
+  #   password: archive-password
+
 sources:
   - name: "Example POP3 account"
     protocol: pop3
@@ -20,9 +36,9 @@ sources:
       password: archive-password
       folder: Archived/Example
 
-  - name: "Example IMAP account"
+  - name: "Secondary IMAP account"
     protocol: imap
-    host: imap.example.com
+    host: imap.secondary.example.com
     port: 993
     encryption: ssl
     username: user2@example.com
