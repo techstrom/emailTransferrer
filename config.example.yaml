@@ -1,0 +1,40 @@
+# Example configuration for the email transferrer
+poll_interval_seconds: 300
+state_file: state/state.json
+log_level: INFO
+
+sources:
+  - name: "Example POP3 account"
+    protocol: pop3
+    host: pop.example.com
+    port: 995
+    encryption: ssl
+    username: user@example.com
+    password: example-password
+    delete_after_transfer: true
+    destination:
+      host: imap.example.com
+      port: 993
+      encryption: ssl
+      username: archive@example.com
+      password: archive-password
+      folder: Archived/Example
+
+  - name: "Example IMAP account"
+    protocol: imap
+    host: imap.example.com
+    port: 993
+    encryption: ssl
+    username: user2@example.com
+    password: example-password
+    folder: INBOX
+    search_criteria: UNSEEN
+    delete_after_transfer: false
+    destination:
+      host: imap.archive.example.com
+      port: 993
+      encryption: ssl
+      username: archive2@example.com
+      password: archive-password
+      folder: INBOX
+
